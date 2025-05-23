@@ -10,8 +10,8 @@ const RoutesEnum = {
 const PodcastRoutes = () => {
     return (
         <Routes>
-        <Route path="/" element={<Navigate to={`${RoutesEnum.HOME}/${RoutesEnum.TRENDING}`} />} />
-        <Route path={`${RoutesEnum.HOME}/tab`} element={<Home />} />
+          <Route path={RoutesEnum.HOME} element={<Navigate to={`${RoutesEnum.HOME}/trending`} />} />
+          <Route path={`${RoutesEnum.HOME}/:tab`} element={<Home />} />
         </Routes>
     );
 }
