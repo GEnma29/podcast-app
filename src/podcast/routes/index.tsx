@@ -1,15 +1,17 @@
-import {  Routes, Route } from "react-router";
+import {  Routes, Route, Navigate } from "react-router";
 import Home from "../pages/home.page";
 
 const RoutesEnum = {
     HOME: "/",
     FAVORITES: "/favorites",
+    TRENDING: "/trending",
 }
 
 const PodcastRoutes = () => {
     return (
         <Routes>
-        <Route path={`${RoutesEnum.HOME}/:tab`} element={<Home />} />
+        <Route path="/" element={<Navigate to={`${RoutesEnum.HOME}/${RoutesEnum.TRENDING}`} />} />
+        <Route path={'/:tab'} element={<Home />} />
         </Routes>
     );
 }
