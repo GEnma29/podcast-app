@@ -1,19 +1,21 @@
-import {  Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/home.page";
 
 const RoutesEnum = {
     HOME: "/",
-    FAVORITES: "/favorites",
-    TRENDING: "/trending",
-}
+    DEFAULT_TAB: "trending", // Tab por defecto
+};
 
 const PodcastRoutes = () => {
     return (
         <Routes>
-          <Route path={RoutesEnum.HOME} element={<Navigate to={`${RoutesEnum.HOME}/trending`} />} />
-          <Route path={`${RoutesEnum.HOME}/:tab`} element={<Home />} />
+            {/* Ruta principal con parámetro opcional */}
+            <Route path={`${RoutesEnum.HOME}:tab?`} element={<Home />} />
+
+            {/* Redirección desde la raíz al home con tab trending */}
+            <Route path={RoutesEnum.HOME} element={<Navigate to={`${RoutesEnum.HOME}${RoutesEnum.DEFAULT_TAB}`} replace />} />
         </Routes>
     );
-}
+};
 
 export default PodcastRoutes;
