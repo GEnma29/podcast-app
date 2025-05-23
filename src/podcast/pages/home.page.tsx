@@ -5,24 +5,24 @@ import type { PodcastSearchResponse } from "../models";
 import Layout from "../components/layout.component";
 import ExpandableSearch from "../components/expandable-search";
 import PodcastCard from "../components/card.component";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { InfiniteScroll } from "../components/infinity-scroll.component";
 import TabSwitcher from "../components/tab-switcher";
 import useFavoritePodcastStore from "../stores/favorite.store";
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 16;
 
 const Home: React.FC = () => {
   const [page, setPage] = useState(1);
   const { tab } = useParams<{ tab: "trending" | "favorites" }>();
   const { favorites } = useFavoritePodcastStore();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [allFeeds, setAllFeeds] = useState<any[]>([]);
 
   const isFavoritesTab = tab === "favorites";
   const isEmptySearch = searchQuery.trim() === "";
 
-  // Build the API URL conditionally
   const apiUrl = isFavoritesTab
     ? null
     : isEmptySearch
@@ -44,12 +44,12 @@ const Home: React.FC = () => {
   );
 
   const loadMore = useCallback(() => {
-    if (!isFavoritesTab && !isEmptySearch) {
-      setPage((prevPage) => prevPage + 1);
-    }
-  }, [isFavoritesTab, isEmptySearch]);
+    if (!isFavoritesTab) setPage((prevPage) => prevPage + 1);
+  }, [isFavoritesTab]);
+
 
   const handleSearch = useCallback((query: string) => {
+    navigate(`/trending`);
     setSearchQuery(query);
     setPage(1);
     setAllFeeds([]);

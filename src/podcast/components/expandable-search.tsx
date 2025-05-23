@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useRef, useEffect } from "react"
 import Search from "@/components/icons/search"
 import { motion, AnimatePresence } from "framer-motion"
@@ -17,25 +15,22 @@ export default function ExpandableSearch({ onSearch }: ExpandableSearchProps) {
     setIsExpanded(!isExpanded)
   }
 
-  // Trigger search callback when searchValue changes
   useEffect(() => {
     if (onSearch) {
       const timer = setTimeout(() => {
         onSearch(searchValue.trim())
-      }, 300) // Debounce for performance
+      }, 300) 
 
       return () => clearTimeout(timer)
     }
   }, [searchValue, onSearch])
 
-  // Focus input when expanded
   useEffect(() => {
     if (isExpanded && inputRef.current) {
       inputRef.current.focus()
     }
   }, [isExpanded])
 
-  // Handle click outside to collapse
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
