@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     ? `/podcasts/trending?max=${ITEMS_PER_PAGE}&page=${page}`
     : `/search/bytitle?q=${encodeURIComponent(searchQuery)}&max=${ITEMS_PER_PAGE}&page=${page}`;
 
-  const { data, isLoading, error } = useSWR<PodcastSearchResponse>(
+  const { data, isLoading } = useSWR<PodcastSearchResponse>(
     apiUrl,
     fetcher,
     {

@@ -14,7 +14,6 @@ interface InfiniteScrollProps<T> {
 export function InfiniteScroll<T>({
   data,
   renderItem,
-  itemsPerPage,
   isLoading,
   hasMore,
   onLoadMore,

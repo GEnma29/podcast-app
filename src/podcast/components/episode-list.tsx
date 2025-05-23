@@ -13,7 +13,7 @@ interface EpisodeListProps {
 }
 
 export function EpisodeList({ podcastId, onSelectEpisode, currentEpisode }: EpisodeListProps) {
-  const limit = 10 // Number of episodes per page
+  const limit = 10 
   const [offset, setOffset] = useState(0)
   const [episodes, setEpisodes] = useState<Episode[]>([])
   const [hasMore, setHasMore] = useState(true)

@@ -11,20 +11,11 @@ interface PodcastPlayerProps {
   episodes: Episode[]
 }
 
-export function PodcastPlayer({ podcast, episodes}: PodcastPlayerProps) {
+export function PodcastPlayer({ podcast}: PodcastPlayerProps) {
   const [selectedEpisode, setSelectedEpisode] = useState<any | null>(null)
   const [scrollPosition, setScrollPosition] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Simulated episodes data
-  // const episodes = Array.from({ length: 20 }, (_, i) => ({
-  //   id: i + 1,
-  //   title: i === 0 ? "3 - La historia de pennang" : `${884 - i} - Find Pennang`,
-  //   duration: "45 mins",
-  //   pubDate: new Date().toISOString(),
-  //   audioUrl: "#",
-  //   imageUrl: "https://via.placeholder.com/150",
-  // }))
 
   const handleScroll = () => {
     if (containerRef.current) {

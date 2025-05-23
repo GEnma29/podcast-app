@@ -18,7 +18,7 @@ type PodcastCardProps = {
 
 const PodcastCard = ({ podcast }: PodcastCardProps) => {
   const { favorites, addFavorite, removeFavorite } = useFavoritePodcastStore()
-  const {data: episodes  , isLoading} = useSWR<ResponseEpisode>(`/episodes/byfeedid?id=${podcast.id}&pretty`, fetcher)
+  const {data: episodes} = useSWR<ResponseEpisode>(`/episodes/byfeedid?id=${podcast.id}&pretty`, fetcher)
    const isMobile = useMediaQuery("(max-width: 768px)");
   const isFavorited = favorites.some((p: PodcastFeed) => p.id === podcast.id)
 
