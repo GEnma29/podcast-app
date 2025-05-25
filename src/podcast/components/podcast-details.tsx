@@ -12,7 +12,6 @@ interface PodcastDetailsProps {
   scale: number
 }
 
-//TODO: move this function to a utils file
 
 
 export function PodcastDetails({ podcast, opacity, scale }: PodcastDetailsProps) {

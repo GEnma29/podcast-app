@@ -40,7 +40,6 @@ export function AudioPlayer({ episode, podcast }: AudioPlayerProps) {
       setCurrentTime(0)
     }
 
-    // Add event listeners
     audio.addEventListener("timeupdate", handleTimeUpdate)
     audio.addEventListener("loadedmetadata", handleLoadedMetadata)
     audio.addEventListener("ended", handleEnded)
@@ -48,7 +47,6 @@ export function AudioPlayer({ episode, podcast }: AudioPlayerProps) {
     // Load audio
     audio.load()
 
-    // Cleanup
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate)
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata)
@@ -71,12 +69,10 @@ export function AudioPlayer({ episode, podcast }: AudioPlayerProps) {
     }
   }, [isPlaying])
 
-  // Toggle play/pause
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying)
   }
 
-  // Handle seeking
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTime = Number.parseFloat(e.target.value)
     setCurrentTime(newTime)
@@ -94,7 +90,6 @@ export function AudioPlayer({ episode, podcast }: AudioPlayerProps) {
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
   }
 
-  // Calculate progress percentage
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0
 
   return (
