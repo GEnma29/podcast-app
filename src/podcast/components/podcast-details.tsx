@@ -1,3 +1,4 @@
+import { stripHtml } from "@/lib/text.utils"
 
 interface PodcastDetailsProps {
   podcast: {
@@ -12,9 +13,7 @@ interface PodcastDetailsProps {
 }
 
 //TODO: move this function to a utils file
-function stripHtml(html: string): string {
-  return html.replace(/<\/?[^>]+(>|$)/g, "")
-}
+
 
 export function PodcastDetails({ podcast, opacity, scale }: PodcastDetailsProps) {
 

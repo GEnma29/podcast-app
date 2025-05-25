@@ -21,3 +21,8 @@ export const decodeToPlainText = (input: string, truncateAtFirstSentence = false
 
   return cleaned;
 };
+
+export function stripHtml(html: string): string {
+  return html.replace(/<\/?[^>]+(>|$)/g, "")
+}
+

@@ -86,6 +86,7 @@ export function EpisodeList({ podcastId, onSelectEpisode, currentEpisode }: Epis
           return (
             <div key={episode.id} ref={isLast ? lastEpisodeRef : undefined}>
               <EpisodeCard
+                defaultImage={episode.image}
                 episode={episode}
                 onSelect={() => onSelectEpisode(episode)}
                 isPlaying={currentEpisode?.id === episode.id}
