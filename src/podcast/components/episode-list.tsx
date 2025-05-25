@@ -79,7 +79,7 @@ export function EpisodeList({ podcastId, onSelectEpisode, currentEpisode }: Epis
   }, [hasMore, loading])
 
   return (
-    <div className="px-4 pb-20">
+    <div className="px-4 pb-20 ">
       <div className="space-y-3">
         {episodes.map((episode, index) => {
           const isLast = index === episodes.length - 1

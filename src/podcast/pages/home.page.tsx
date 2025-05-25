@@ -33,6 +33,8 @@ const Home: React.FC = () => {
     apiUrl,
     fetcher,
     {
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true,
       onSuccess: (newData) => {
         if (newData?.feeds) {
           setAllFeeds((prev) =>

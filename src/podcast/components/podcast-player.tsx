@@ -36,7 +36,7 @@ export function PodcastPlayer({ podcast}: PodcastPlayerProps) {
   const imageScale = Math.max(0.7, 1 - scrollPosition / 200)
 
   return (
-    <div className="flex flex-col h-full bg-gray-900 backdrop-blur-md text-white  relative">
+    <div className="flex flex-col h-full  text-white  relative">
       <div ref={containerRef} className="flex-1 overflow-y-auto scrollbar-hide" style={{ height: "calc(100% - 140px)" }}>
         <PodcastDetails podcast={podcast} opacity={detailsOpacity} scale={imageScale} />
         <EpisodeList podcastId={podcast.id} onSelectEpisode={setSelectedEpisode} currentEpisode={selectedEpisode} />

@@ -120,3 +120,11 @@
   }
 }
 
+/* In your global.css or tailwind.config.js */
+.scrollbar-hide {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

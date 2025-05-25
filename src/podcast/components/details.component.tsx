@@ -57,7 +57,7 @@ export function ResponsiveDrawer({
       )}
       <div
         className={cn(
-          "fixed z-50 transition-all rounded-lg duration-300 ease-in-out",
+          "fixed z-50 transition-all rounded-lg bg-black bg-opacity-75 duration-300 ease-in-out",
 
           isMobile
             ? "inset-x-0 bottom-0 h-[90vh] bg-background"
@@ -71,7 +71,7 @@ export function ResponsiveDrawer({
         )}
       >
         <PodcastHeader podcast={podcast} onClose={() => setOpen(false)} />
-        <div className="h-full w-full">{children}</div>
+        <div className="h-full w-full  bg-gray-900   bg-opacity-75 backdrop-blur-md">{children}</div>
       </div>
     </>
   );

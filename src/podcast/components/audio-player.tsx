@@ -1,6 +1,7 @@
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
-import { Pause, Play } from "lucide-react"
+import { Pause } from "lucide-react"
+import PlayIcon from "@/components/icons/play"
 import type { Episode, PodcastFeed } from "@/podcast/models"
 
 interface AudioPlayerProps {
@@ -97,7 +98,7 @@ export function AudioPlayer({ episode, podcast }: AudioPlayerProps) {
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700 p-3">
+    <div className="fixed bottom-12 left-0 right-0 bg-gray-800 border-t border-gray-700 p-3">
 
 
       <div className="flex items-center">
@@ -127,7 +128,7 @@ export function AudioPlayer({ episode, podcast }: AudioPlayerProps) {
             {isPlaying ? (
               <Pause className="w-5 h-5" fill="currentColor" />
             ) : (
-              <Play className="w-5 h-5" fill="currentColor" />
+              <PlayIcon />
             )}
           </button>
 
