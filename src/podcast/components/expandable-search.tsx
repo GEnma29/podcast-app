@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import Search from "@/components/icons/search"
 import { motion, AnimatePresence } from "framer-motion"
-
+import useMediaQuery from "@/hooks/useMediaQuery"
 interface ExpandableSearchProps {
   onSearch?: (query: string) => void
 }
@@ -10,6 +10,10 @@ export default function ExpandableSearch({ onSearch }: ExpandableSearchProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [searchValue, setSearchValue] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
+  const isMobile = useMediaQuery("(max-width: 768px)")
+
+  const width = isMobile ? 150 : 300
+
 
   const toggleSearch = () => {
     setIsExpanded(!isExpanded)
@@ -55,7 +59,7 @@ export default function ExpandableSearch({ onSearch }: ExpandableSearchProps) {
         {isExpanded ? (
           <motion.div
             initial={{ width: 40, opacity: 0 }}
-            animate={{ width: 300, opacity: 1 }}
+            animate={{ width: width, opacity: 1 }}
             exit={{ width: 40, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="relative"
