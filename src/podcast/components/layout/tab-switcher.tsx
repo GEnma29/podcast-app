@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import StartSm from "@/components/icons/start-sm";
-import useFavoritePodcastStore from "../stores/favorite.store";
+import useFavoritePodcastStore from "../../stores/favorite.store";
 import { cn } from "@/lib/utils";
 
 export default function TabSwitcher() {

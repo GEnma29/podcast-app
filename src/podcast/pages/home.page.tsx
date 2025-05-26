@@ -2,12 +2,12 @@ import React, { useState, useCallback } from "react";
 import useSWR from "swr";
 import { fetcher } from "../services/fetcher";
 import type { PodcastSearchResponse } from "../models";
-import Layout from "../components/layout.component";
-import ExpandableSearch from "../components/expandable-search";
+import Layout from "../components/layout/layout.component";
+import ExpandableSearch from "../components/common/expandable-search";
 import PodcastCard from "../components/card.component";
 import { useNavigate, useParams } from "react-router";
-import { InfiniteScroll } from "../components/infinity-scroll.component";
-import TabSwitcher from "../components/tab-switcher";
+import { InfiniteScroll } from "../components/common/infinity-scroll.component";
+import TabSwitcher from "../components/layout/tab-switcher";
 import useFavoritePodcastStore from "../stores/favorite.store";
 
 const ITEMS_PER_PAGE = 16;

@@ -1,6 +1,6 @@
 "use client"
 
-import type { Episode } from "../models"
+import type { Episode } from "../../models"
 import { stripHtml } from "@/lib/text.utils"
 import PlayIcon from "@/components/icons/play"
 

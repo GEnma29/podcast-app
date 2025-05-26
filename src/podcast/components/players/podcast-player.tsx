@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { PodcastDetails } from "./podcast-details"
-import { EpisodeList } from "./episode-list"
+import { PodcastDetails } from "../podcast-details"
+import { EpisodeList } from "../episodes/episode-list"
 import { AudioPlayer } from "./audio-player"
 import type { Episode, PodcastFeed } from "@/podcast/models"
 

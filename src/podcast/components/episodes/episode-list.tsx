@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react"
 import { EpisodeCard } from "./episode-card"
-import type { Episode, ResponseEpisode } from "../models"
+import type { Episode, ResponseEpisode } from "../../models"
 import useSWR from "swr"
-import { fetcher } from "../services/fetcher"
+import { fetcher } from "../../services/fetcher"
 
 interface EpisodeListProps {
   podcastId: number
