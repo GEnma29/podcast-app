@@ -11,6 +11,17 @@ interface EpisodeCardProps {
   isPlaying: boolean
 }
 
+function isEmptyString(value: any): boolean {
+  console.log("Checking if value is empty:",   (typeof value === "string" && value.trim() === "") );
+  
+  return (
+    value === null ||
+    value === undefined ||
+    (typeof value === "string" && value.trim() === "")
+  );
+}
+
+
 export function EpisodeCard({ episode, defaultImage, onSelect, isPlaying }: EpisodeCardProps) {
   return (
     <div
@@ -20,7 +31,7 @@ export function EpisodeCard({ episode, defaultImage, onSelect, isPlaying }: Epis
       <div className="flex-shrink-0 mr-3">
         <div className="w-10 h-10 relative rounded overflow-hidden bg-red-500">
           <img
-            src={episode.image || defaultImage}
+            src={isEmptyString(episode.image) ? defaultImage : episode.image}
             alt={episode.title || "Episode thumbnail"}
             width={40}
             height={40}

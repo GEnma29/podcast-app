@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import useSWR from "swr";
 import { fetcher } from "../services/fetcher";
-import type { PodcastSearchResponse } from "../models";
+import type { PodcastFeed, PodcastSearchResponse } from "../models";
 import Layout from "../components/layout/layout.component";
 import ExpandableSearch from "../components/common/expandable-search";
 import PodcastCard from "../components/card.component";
@@ -27,14 +27,15 @@ const Home: React.FC = () => {
     ? null
     : isEmptySearch
     ? `/podcasts/trending?max=${ITEMS_PER_PAGE}&page=${page}`
-    : `/search/bytitle?q=${encodeURIComponent(searchQuery)}&max=${ITEMS_PER_PAGE}&page=${page}`;
+    : `/search/bytitle?q=${encodeURIComponent(
+        searchQuery
+      )}&max=${ITEMS_PER_PAGE}&page=${page}`;
 
   const { data, isLoading } = useSWR<PodcastSearchResponse>(
     apiUrl,
     fetcher,
     {
       revalidateOnFocus: true,
-      revalidateOnReconnect: true,
       onSuccess: (newData) => {
         if (newData?.feeds) {
           setAllFeeds((prev) =>
@@ -49,7 +50,6 @@ const Home: React.FC = () => {
     if (!isFavoritesTab) setPage((prevPage) => prevPage + 1);
   }, [isFavoritesTab]);
 
-
   const handleSearch = useCallback((query: string) => {
     navigate(`/trending`);
     setSearchQuery(query);
@@ -57,12 +57,12 @@ const Home: React.FC = () => {
     setAllFeeds([]);
   }, []);
 
-  const hasMore = !isFavoritesTab && !isEmptySearch && data?.feeds?.length === ITEMS_PER_PAGE;
+  const hasMore =
+    !isFavoritesTab && !isEmptySearch && data?.feeds?.length === ITEMS_PER_PAGE;
 
   const displayedItems = isFavoritesTab
     ? Array.from(favorites.values())
     : allFeeds;
-
   return (
     <Layout>
       <header className="flex items-center justify-between p-4">
@@ -77,7 +77,14 @@ const Home: React.FC = () => {
           itemsPerPage={ITEMS_PER_PAGE}
           hasMore={hasMore}
           onLoadMore={loadMore}
-          renderItem={(item) => <PodcastCard key={item.id} podcast={item} />}
+          renderItem={(item: PodcastFeed) => (
+            <PodcastCard
+              key={item.id}
+              podcast={item}
+              episodeCount={item.episodeCount}
+              defaultImage={item.image}
+            />
+          )}
           loadingComponent={
             <div className="col-span-full flex justify-center py-8">
               <div className="animate-pulse flex space-x-4">

@@ -39,9 +39,8 @@ export function PodcastPlayer({ podcast}: PodcastPlayerProps) {
     <div className="flex flex-col h-full  text-white  relative">
       <div ref={containerRef} className="flex-1 overflow-y-auto scrollbar-hide" style={{ height: "calc(100% - 140px)" }}>
         <PodcastDetails podcast={podcast} opacity={detailsOpacity} scale={imageScale} />
-        <EpisodeList podcastId={podcast.id} onSelectEpisode={setSelectedEpisode} currentEpisode={selectedEpisode} />
+        <EpisodeList podcastId={podcast.id} onSelectEpisode={setSelectedEpisode} defaultImage={podcast.image} currentEpisode={selectedEpisode} />
       </div>
-
       {selectedEpisode && <AudioPlayer episode={selectedEpisode} podcast={podcast} />}
     </div>
   )

@@ -10,9 +10,10 @@ interface EpisodeListProps {
   podcastId: number
   onSelectEpisode: (episode: Episode) => void
   currentEpisode: Episode | null
+  defaultImage?: string
 }
 
-export function EpisodeList({ podcastId, onSelectEpisode, currentEpisode }: EpisodeListProps) {
+export function EpisodeList({ podcastId, onSelectEpisode, currentEpisode , defaultImage}: EpisodeListProps) {
   const limit = 10 
   const [offset, setOffset] = useState(0)
   const [episodes, setEpisodes] = useState<Episode[]>([])
@@ -86,7 +87,7 @@ export function EpisodeList({ podcastId, onSelectEpisode, currentEpisode }: Epis
           return (
             <div key={episode.id} ref={isLast ? lastEpisodeRef : undefined}>
               <EpisodeCard
-                defaultImage={episode.image}
+                defaultImage={defaultImage}
                 episode={episode}
                 onSelect={() => onSelectEpisode(episode)}
                 isPlaying={currentEpisode?.id === episode.id}
